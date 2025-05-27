@@ -54,7 +54,7 @@ func Embed(
 		out.AddResource(coff.RT_MANIFEST, id, manifest)
 	}
 	if iconFilePath != "" {
-		for _, iconFileNameSingle := range strings.Split(iconFilePath, ",") {
+		for iconFileNameSingle := range strings.SplitSeq(iconFilePath, ",") {
 			f, err := addIcon(out, iconFileNameSingle, newid)
 			if err != nil {
 				return err
