@@ -1,6 +1,7 @@
 package command
 
 import (
+	"io"
 	"os/exec"
 )
 
@@ -13,8 +14,11 @@ type OS struct {
 
 // New creates a new Executor instance based on the operating system.
 // Useful to start building commands.
-func New() Executor {
-	return &OS{&Command{&exec.Cmd{}}}
+func New(r ...Runner) Executor {
+	if len(r) > 0 {
+		return &OS{r[0]}
+	}
+	return &OS{&Command{new(exec.Cmd)}}
 }
 
 // Convert transforms an existing Runner into an Executor,
@@ -34,6 +38,14 @@ func (os *OS) Execute(name string, args ...string) Executor {
 // It enables fluent configuration and execution of commands.
 type Command struct {
 	*exec.Cmd
+}
+
+// NewRunner creates a new Runner instance with specified stdout and stderr writers.
+func NewRunner(stdout, stderr io.Writer) Runner {
+	return &Command{&exec.Cmd{
+		Stdout: stdout,
+		Stderr: stderr,
+	}}
 }
 
 // WithDir sets the working directory where the command will be executed.
