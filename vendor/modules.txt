@@ -1,0 +1,7 @@
+# github.com/i9si-sistemas/assert v0.0.0-20250430171352-359d1481c58c
+## explicit; go 1.23.1
+github.com/i9si-sistemas/assert
+github.com/i9si-sistemas/assert/call
+# github.com/i9si-sistemas/command v1.0.0
+## explicit; go 1.24.1
+github.com/i9si-sistemas/command

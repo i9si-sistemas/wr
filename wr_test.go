@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/i9si-sistemas/assert"
-	"github.com/i9si-sistemas/wr/command"
+	"github.com/i9si-sistemas/command"
 )
 
 const name = "wr_windows_amd64.syso"
